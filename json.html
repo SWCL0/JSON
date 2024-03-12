@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form">
+        <div id="output-tabel"></div>
+        <form id="form-input">
+            <div>
+                <label for="voornaam">Voornaam:</label>
+                <input type="text" placeholder="Voornaam" id="voornaam">
+            </div>
+            <div>
+                <label for="tv">Tussenvoegsel:</label>
+                <input type="text" placeholder="Tussenvoegsel" id="tv">
+            </div>
+            <div>
+                <label for="achternaam">Achternaam:</label>
+                <input type="text" placeholder="Achternaam" id="achternaam">
+            </div>
+            <div>
+                <label for="klas">Klas:</label>
+                <input type="text" placeholder="Klas" id="klas">
+            </div>
+            <button type="button" onclick="addToArray()">Opslaan</button>
+        </form>
+    </div>
+    <script>
+        let studenten = [];
+
+        var output = document.getElementById("output-tabel");
+
+        var voornaam = document.getElementById("voornaam");
+        var tv = document.getElementById("tv");
+        var achternaam = document.getElementById("achternaam");
+        var klas = document.getElementById("klas");
+
+        function addToArray() {
+            let nieuweStudent = {
+                "voornaam": voornaam.value,
+                "tv": tv.value,
+                "achternaam": achternaam.value,
+                "klas": klas.value
+            };
+            studenten.push(nieuweStudent);
+
+            legenEnLatenZien();
+        }
+
+        function legenEnLatenZien() {
+            voornaam.value = "";
+            tv.value = "";
+            achternaam.value = "";
+            klas.value = "";
+
+            output.innerHTML = "";
+
+            studenten.forEach(function(student) {
+                output.innerHTML += "Voornaam: " + student.voornaam + "<br/>";
+                output.innerHTML += "Tussenvoegsel: " + student.tv + "<br/>";
+                output.innerHTML += "Achternaam: " + student.achternaam + "<br/>";
+                output.innerHTML += "Klas: " + student.klas + "<br/><br/>";
+            });
+        }
+    </script>
+</body>
+</html>
